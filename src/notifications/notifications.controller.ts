@@ -5,7 +5,6 @@ import { NotificationsService } from './notifications.service';
 export class NotificationsController {
   constructor(private readonly notificationsService: NotificationsService) {}
 
-
     @Post()
     async create(@Body() createNotificationDto: CreateNotificationDto) {
         let notificationType: Notifiable;
@@ -17,7 +16,6 @@ export class NotificationsController {
             case 'sms':
                 notificationType = new SMSNotification();
                 break;
-
             case 'ws':
                 notificationType = new WhatsAppNotification();
                 break;

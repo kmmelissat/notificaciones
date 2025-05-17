@@ -4,7 +4,7 @@ export interface Notifcable {
 
 export abstract class AbstractNotification implements Notifcable {
     receiver: string;
-    setReciver(receiver: string): void {
+    setReciever(receiver: string): void {
         this.receiver = receiver;
     }
 
