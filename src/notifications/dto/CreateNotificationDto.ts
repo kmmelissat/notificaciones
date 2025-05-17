@@ -1,20 +1,34 @@
-import { IsEmail, IsNotEmpty, IsString } from 'class-validator';
+import {
+  IsNotEmpty,
+  IsString,
+  IsEmail,
+  IsOptional,
+  IsIn,
+} from 'class-validator';
 
 export class CreateNotificationDto {
+  @IsString()
+  @IsNotEmpty()
+  @IsIn(['email', 'sms', 'ws'])
+  type: string;
 
-    @IsString()
-    @IsNotEmpty()
-    receiver: string;
+  @IsString()
+  @IsNotEmpty()
+  receiverName: string;
 
-    @IsEmail()
-    @IsNotEmpty()
-    email: string;
+  @IsEmail()
+  @IsOptional()
+  email?: string;
 
-    @IsString()
-    @IsNotEmpty()
-    phoneNumber: string;
+  @IsString()
+  @IsOptional()
+  phoneNumber?: string;
 
-    @IsString()
-    @IsNotEmpty()
-    area: string;
+  @IsString()
+  @IsOptional()
+  area?: string;
+
+  @IsString()
+  @IsNotEmpty()
+  message: string;
 }

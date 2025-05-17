@@ -1,17 +1,27 @@
-import { AbstractNotification } from "../abstract/abstractNotification";
+import { AbstractNotification } from '../abstract/abstractNotification';
 
 export class SmsNotification extends AbstractNotification {
+  private phoneNumber: string;
+  private area: string;
+  private message: string;
+  private receiverName: string;
 
-    phoneNumber: string;
-    area: string;
+  constructor(
+    phoneNumber: string,
+    area: string,
+    message: string,
+    receiverName: string,
+  ) {
+    super();
+    this.phoneNumber = phoneNumber;
+    this.area = area;
+    this.message = message;
+    this.receiverName = receiverName;
+    this.setReciever(`${area}${phoneNumber}`);
+  }
 
-    constructor(phoneNumber: string, area: string) {
-        super();
-        this.phoneNumber = phoneNumber;
-        this.area = area;
-    }
-
-    async sent(): Promise<string> {
-        return `Sent to ${this.receiver} SMS to +${this.area}${this.phoneNumber}`;
-    }
+  async sent(): Promise<string> {
+    // Here you would typically integrate with an SMS service
+    return `Sent to ${this.receiverName} SMS to +${this.receiver}`;
+  }
 }
