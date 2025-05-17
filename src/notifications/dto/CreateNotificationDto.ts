@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsString } from 'class-validator';
+import { IsEmail, IsNotEmpty, IsString } from 'class-validator';
 
 export class CreateNotificationDto {
 
@@ -9,4 +9,12 @@ export class CreateNotificationDto {
     @IsEmail()
     @IsNotEmpty()
     email: string;
+
+    @IsString()
+    @IsNotEmpty()
+    phoneNumber: string;
+
+    @IsString()
+    @IsNotEmpty()
+    area: string;
 }
