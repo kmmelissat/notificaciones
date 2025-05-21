@@ -21,7 +21,6 @@ export class WhatsappNotification extends AbstractNotification {
   }
 
   async sent(): Promise<string> {
-    // Here you would typically integrate with a WhatsApp service
     return `Sent to ${this.receiverName} WhatsApp message to +${this.receiver}`;
   }
 }

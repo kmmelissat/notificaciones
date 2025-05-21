@@ -21,7 +21,6 @@ export class SmsNotification extends AbstractNotification {
   }
 
   async sent(): Promise<string> {
-    // Here you would typically integrate with an SMS service
     return `Sent to ${this.receiverName} SMS to +${this.receiver}`;
   }
 }

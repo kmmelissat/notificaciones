@@ -21,6 +21,102 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
+# Notification Service
+
+A NestJS-based notification service that supports email, SMS, and WhatsApp notifications.
+
+## Setup
+
+1. Install dependencies:
+
+```bash
+npm install
+```
+
+2. Start the server:
+
+```bash
+npm run start:dev
+```
+
+The server will run on `http://localhost:3000`
+
+## API Usage
+
+Send POST requests to `http://localhost:3000/notifications` with the following JSON structure:
+
+### Email Notification
+
+```json
+{
+  "type": "email",
+  "receiverName": "JOHN DOE",
+  "email": "john@example.com",
+  "message": "Your message here"
+}
+```
+
+### SMS Notification
+
+```json
+{
+  "type": "sms",
+  "receiverName": "JOHANE DOE",
+  "phoneNumber": "12345678",
+  "area": "503",
+  "message": "Your message here"
+}
+```
+
+### WhatsApp Notification
+
+```json
+{
+  "type": "ws",
+  "receiverName": "FULANITO",
+  "phoneNumber": "12345678",
+  "area": "503",
+  "message": "Your message here"
+}
+```
+
+## Response Format
+
+Successful response:
+
+```json
+{
+  "success": true,
+  "message": "Sent to [RECEIVER_NAME] [TYPE] to [CONTACT]"
+}
+```
+
+Error response:
+
+```json
+{
+  "statusCode": 400,
+  "message": "Error message here",
+  "error": "Bad Request"
+}
+```
+
+## Required Fields
+
+- All notifications require:
+
+  - `type`: "email" | "sms" | "ws"
+  - `receiverName`: string
+  - `message`: string
+
+- Email notifications require:
+
+  - `email`: string (valid email format)
+
+- SMS and WhatsApp notifications require:
+  - `phoneNumber`: string
+  - `area`: string
+
 ## Description
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
